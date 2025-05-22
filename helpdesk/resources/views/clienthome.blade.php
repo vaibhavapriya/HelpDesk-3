@@ -1,2 +1,6 @@
 @extends('components.layouts.app.client')
-@section('content','client home')
+@section('content')
+
+    @include('components.grid-home-client')
+
+@endsection

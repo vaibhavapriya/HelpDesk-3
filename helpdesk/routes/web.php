@@ -2,13 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\TicketController;
 
-Route::get('/client', function () {
+Route::get('/', function () {
     return view('clienthome');
+});
+Route::get('/kb', function () {
+    return view('user.knowledge');
 });
 Route::get('/admin', function () {
     return view('adminhome');
 });
+
+Route::resource('tickets', TicketController::class);
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
