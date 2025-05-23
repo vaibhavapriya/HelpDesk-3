@@ -22,4 +22,49 @@
         </div>
         <a href="{{ route('tickets.index') }}" class="btn btn-secondary">Back to List</a>
     </div>
+    <div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog-comment">
+                    <h3 class="text-success">Comments</h3>
+                    <hr/>
+                    <ul class="comments">
+                        @foreach($ticket->replies as $reply)
+                            <li class="clearfix">
+                                <!-- <img src="{{ $reply->user->avatar_url ?? 'https://bootdey.com/img/Content/user_1.jpg' }}" class="avatar" alt="User Avatar"> -->
+                                <div class="post-comments">
+                                    <p class="meta">
+                                        {{ $reply->created_at->format('M d, Y') }}
+                                        <a href="#">{{ $reply->user->name ?? 'Anonymous' }}</a> says :
+                                        <i class="pull-right"><a href="#"><small>Reply</small></a></i>
+                                    </p>
+                                    <p>{{ $reply->reply }}</p>
+                                </div>
+
+                                {{-- Optional: If you have nested replies, you can recursively show them here --}}
+                                @if($reply->children && $reply->children->count() > 0)
+                                    <ul class="comments">
+                                        @foreach($reply->children as $childReply)
+                                            <li class="clearfix">
+                                                <img src="{{ $childReply->user->avatar_url ?? 'https://bootdey.com/img/Content/user_2.jpg' }}" class="avatar" alt="User Avatar">
+                                                <div class="post-comments">
+                                                    <p class="meta">
+                                                        {{ $childReply->created_at->format('M d, Y') }}
+                                                        <a href="#">{{ $childReply->user->name ?? 'Anonymous' }}</a> says :
+                                                        <i class="pull-right"><a href="#"><small>Reply</small></a></i>
+                                                    </p>
+                                                    <p>{{ $childReply->body }}</p>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

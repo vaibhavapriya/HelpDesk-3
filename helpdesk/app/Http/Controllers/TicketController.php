@@ -13,10 +13,15 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::with('requester')-> simplePaginate(15); // ->get() eager load the requester
-        //dd(Ticket::with('requester')-> paginate(5));
+        //$tickets = Ticket::all(); foreach($ticket)echo $ticket->requester->name; //cause n+1 queries
+        //dd(DB::enableQueryLog());//query logs
+        //$tickets = Ticket::with('requester')-> get();
+        $tickets = Ticket::simplePaginate(15);// ->get() eager load the requester
+        //dd(Ticket::all()-> paginate(5));
+        //$tickets = Ticket::where('user_id', Auth::id())->latest()->get();
         return view('ticket.index', compact('tickets'));
-        
+        //return view('tickets.index', ['tickets' => $tickets,'totalCount' => $tickets->count(),]);
+
     }
 
     /**
@@ -40,6 +45,10 @@ class TicketController extends Controller
      */
     public function show(ticket $ticket)
     {
+        // Eager load replies
+        $ticket->load('replies');
+        //$ticket = Ticket::with('replies')->find($id); 
+        
         return view('ticket.show',compact('ticket'));
     }
 
