@@ -1,4 +1,4 @@
-<main class="d-flex align-items-center justify-content-center ">
+<section class="d-flex align-items-center justify-content-center ">
     <div class="container">
         <div class="row g-4 mb-5">
 
@@ -50,4 +50,4 @@
         </div>
         </div>
     </div>
-</main>
+</section>

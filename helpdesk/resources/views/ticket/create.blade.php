@@ -1,12 +1,13 @@
 @extends('components.layouts.app.client')
 @section('content')
+@include('components.grid-home-client')
 <div class="container mt-5 mb-5 d-flex justify-content-center">
     <div class="card px-1 py-4">
         <form action="{{ route('tickets.store') }}" method="POST">
         @csrf
         @method('POST')
             <div class="card-body">
-                <h6 class="information">Please provide following information about Anz CMK</h6>
+                <h6 class="information">Please provide following information about your query</h6>
                 <div class="row mt-3">
                     <div class="col-sm-12">
                         <div class="form-group">

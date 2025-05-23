@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreerrorlogRequest;
 use App\Http\Requests\UpdateerrorlogRequest;
-use App\Models\errorlog;
+use App\Models\Errorlog;
 
 class ErrorlogController extends Controller
 {

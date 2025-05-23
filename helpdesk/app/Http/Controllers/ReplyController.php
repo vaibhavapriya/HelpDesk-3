@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorereplyRequest;
 use App\Http\Requests\UpdatereplyRequest;
-use App\Models\reply;
+use App\Models\Reply;
 
 class ReplyController extends Controller
 {

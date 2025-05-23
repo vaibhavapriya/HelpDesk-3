@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreticketRequest;
 use App\Http\Requests\UpdateticketRequest;
-use App\Models\ticket;
+use App\Models\Ticket;
 
 class TicketController extends Controller
 {
@@ -13,6 +13,9 @@ class TicketController extends Controller
      */
     public function index()
     {
+        $tickets = Ticket::with('requester')-> simplePaginate(15); // ->get() eager load the requester
+        //dd(Ticket::with('requester')-> paginate(5));
+        return view('ticket.index', compact('tickets'));
         
     }
 
@@ -37,7 +40,7 @@ class TicketController extends Controller
      */
     public function show(ticket $ticket)
     {
-        //
+        return view('ticket.show',compact('ticket'));
     }
 
     /**
@@ -45,7 +48,7 @@ class TicketController extends Controller
      */
     public function edit(ticket $ticket)
     {
-        //
+        return view('ticket.edit',compact('ticket'));
     }
 
     /**

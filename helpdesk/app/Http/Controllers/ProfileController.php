@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreprofileRequest;
 use App\Http\Requests\UpdateprofileRequest;
-use App\Models\profile;
+use App\Models\Profile;
 
 class ProfileController extends Controller
 {
