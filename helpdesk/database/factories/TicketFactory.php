@@ -3,9 +3,9 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use App\Models\User;
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ticket>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Ticket>
  */
 class TicketFactory extends Factory
 {
