@@ -16,8 +16,7 @@
       <!-- Menu -->
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
        <ul class="navbar-nav">
-      <?php 
-        if (!isset($_SESSION['jwt_token']) || empty($_SESSION['jwt_token'])) { ?>
+        @guest
           <li class="nav-item">
             <a class="nav-link" href="newTicket">SUBMIT TICKET</a>
           </li>
@@ -27,7 +26,9 @@
           <li class="nav-item">
             <a class="btn btn-primary" href="login">LOGIN</a>
           </li>
-      <?php } else { ?>
+        @endguest
+        <!-- @if (Auth::check()) -->
+        @auth
           <li class="nav-item">
             <a class="nav-link" href="newTicket">SUBMIT TICKET</a>
           </li>
@@ -43,15 +44,21 @@
               <i class="far fa-user"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-              <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                <!-- admin only -->
+                @if(Auth::user()->role === 'admin')
                 <li><a class="dropdown-item" href="adminhome"><i class="fas fa-user-shield me-2"></i> Admin Portal</a></li>
-              <?php endif; ?>
+                @endif
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="profile"><i class="fas fa-sign-out-alt me-2"></i> My Profile</a></li>
               <li><a class="dropdown-item" href="logout"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="btn btn-danger">Logout</button>
+              </form>
             </ul>
           </li>
-      <?php } ?>
+        @endauth
+
       </ul>
       </div>
 

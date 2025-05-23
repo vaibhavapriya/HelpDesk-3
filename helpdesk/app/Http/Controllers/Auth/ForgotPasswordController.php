@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+//use App\Http\Requests\Auth\EmailVerificationRequest;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
@@ -15,8 +16,14 @@ class ForgotPasswordController extends Controller
         return view('guest.forgotPassword');
     }
     
-    public function store(StoreticketRequest $request)
+    public function store(EmailVerificationRequest $request)
     {
-        //
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        return $status == Password::RESET_LINK_SENT
+                    ? back()->with('status', __($status))
+                    : back()->withErrors(['email' => __($status)]);
     }
 }
