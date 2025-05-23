@@ -6,9 +6,9 @@ use App\Http\Controllers\TicketController;
 
 Route::get('/', function () {
     return view('clienthome');
-});
+})->name('home');
 Route::get('/kb', function () {
-    return view('user.knowledge');
+    return view('guest.knowledge');
 });
 Route::get('/admin', function () {
     return view('adminhome');
