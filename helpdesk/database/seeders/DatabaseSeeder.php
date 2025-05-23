@@ -15,9 +15,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+        $count=rand(3, 4);
+        User::factory()->count(10)
+            ->has(Ticket::factory()->count(10)
+            ->has(Reply::factory()->count($count)  , 'replies')
+            , 'tickets') ->create();
+
     }
 }

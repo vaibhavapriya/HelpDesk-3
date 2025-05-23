@@ -17,7 +17,11 @@ class ReplyFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'ticket_id' => Ticket::factory(),
+            'replier_id' => User::factory(),
+            'reply' => $this->faker->paragraph, // ✅ Added reply content
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
