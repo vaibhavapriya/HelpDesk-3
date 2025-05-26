@@ -16,3 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+// ->withMiddleware(function (Middleware $middleware) {
+//     $middleware->alias([
+//         'requester.or.admin' => \App\Http\Middleware\EnsureUserIsRequesterOrAdmin::class,
+//     ]);
+// })

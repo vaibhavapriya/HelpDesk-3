@@ -61,4 +61,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Ticket::class, 'requester_id');
     }
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isClient(): bool
+    {
+        return $this->role === 'client';
+    }
+
+    public function isAgent(): bool
+    {
+        return $this->role === 'agent';
+    }
 }

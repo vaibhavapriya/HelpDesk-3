@@ -45,6 +45,7 @@ class TicketController extends Controller
      */
     public function show(ticket $ticket)
     {
+        $this->authorize('view', $ticket);//policies
         // Eager load replies
         $ticket->load('replies');
         //$ticket = Ticket::with('replies')->find($id); 

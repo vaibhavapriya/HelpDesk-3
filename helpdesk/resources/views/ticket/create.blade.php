@@ -2,14 +2,15 @@
 @section('content')
 @include('components.grid-home-client')
 <div class="container mt-5 mb-5 d-flex justify-content-center">
-    <div class="card px-1 py-4">
+    <div class="card px-1 py-4 col-lg-7">
         <form action="{{ route('tickets.store') }}" method="POST">
         @csrf
         @method('POST')
             <div class="card-body">
-                <h6 class="information">Please provide following information about your query</h6>
+                <h4 class="title mb-3">New Ticket</h4>
+                <p class="information text-muted">Please provide the following information about your query.</p>
                 <div class="row mt-3">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 ">
                         <div class="form-group">
                             <label for="title" class="form-label">Title</label>
                             <div class="input-group"> <input class="form-control" type="text" placeholder="title"> </div>

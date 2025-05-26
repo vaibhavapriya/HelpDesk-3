@@ -22,6 +22,8 @@ class TicketPolicy
     public function view(User $user, ticket $ticket): bool
     {
         return false;
+        return $user->id === $ticket->requester_id || $user->is_admin;
+
     }
 
     /**

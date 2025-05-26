@@ -20,13 +20,13 @@
         <div class="mb-3">
             <strong>Requester:</strong> {{ $ticket->requester->name }}
         </div>
-        <a href="{{ route('tickets.index') }}" class="btn btn-secondary">Back to List</a>
+        
     </div>
-    <div class="container bootstrap snippets bootdey">
+    <div class="container ">
         <div class="row">
             <div class="col-12">
-                <div class="blog-comment">
-                    <h3 class="text-success">Comments</h3>
+                <!-- <div class="blog-comment col-12"> -->
+                    <h3 class="text-success">Replies</h3>
                     <hr/>
                     <ul class="comments">
                         @foreach($ticket->replies as $reply)
@@ -62,9 +62,10 @@
                             </li>
                         @endforeach
                     </ul>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
+        <a href="{{ route('tickets.index') }}" class="btn btn-secondary">Back to List</a>
     </div>
 
 @endsection

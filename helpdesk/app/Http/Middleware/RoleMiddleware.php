@@ -43,3 +43,20 @@ class RoleMiddleware
 
 //     return $next($request);
 // }
+
+// In app/Http/Middleware/EnsureUserIsRequesterOrAdmin.php:
+// public function handle($request, Closure $next)
+// {
+//     $user = auth()->user();
+//     $ticket = $request->route('ticket'); // assuming route model binding
+
+//     if ($user->id !== $ticket->requester_id && !$user->is_admin) {
+//         abort(403, 'Unauthorized');
+//     }
+
+//     return $next($request);
+// }
+// protected $routeMiddleware = [
+//     // ...
+//     'requester.or.admin' => \App\Http\Middleware\EnsureUserIsRequesterOrAdmin::class,
+// ];app/Http/Kernel.php:

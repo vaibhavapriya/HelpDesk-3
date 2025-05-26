@@ -11,19 +11,19 @@
                     <th>Priority</th>
                     <th>Status</th>
                     <th>Department</th>
-                    <th>Requester</th>
+                    <!-- <th>Requester</th> -->
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($tickets as $ticket)
-                    <tr href="{{ route('tickets.show', $ticket->id) }}" >
+                    <tr onclick="window.location='{{ route('tickets.show', $ticket->id) }}'" style="cursor: pointer;">
                         <td>{{ $ticket->id }}</td>
                         <td>{{ $ticket->title }}</td>
                         <td>{{ ucfirst($ticket->priority) }}</td>
                         <td>{{ ucfirst($ticket->status) }}</td>
                         <td>{{ $ticket->department }}</td>
-                        <td>{{ $ticket->requester->name }}</td>
+                        <!-- <td>{{ $ticket->requester->name }}</td> -->
                         <td>
                             <!-- <a href="{{ route('tickets.show', $ticket->id) }}" class="btn btn-info">View</a> -->
                             <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn btn-warning">Edit</a>
