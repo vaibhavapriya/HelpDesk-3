@@ -2,7 +2,8 @@
 @section('content')
 <div class="container mt-5">
     <h2 class="mb-4">Register</h2>
-
+    <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
     <form method="POST" action="{{ route('register-p') }}">
         @csrf
 
@@ -33,5 +34,7 @@
     </form>
 
     <p class="mt-3">Already have an account? <a href="{{ route('login') }}">Login</a></p>
+    </div>
+    </div>
 </div>
 @endsection

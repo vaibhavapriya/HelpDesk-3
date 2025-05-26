@@ -17,7 +17,7 @@
             </thead>
             <tbody>
                 @foreach ($tickets as $ticket)
-                    <tr>
+                    <tr href="{{ route('tickets.show', $ticket->id) }}" >
                         <td>{{ $ticket->id }}</td>
                         <td>{{ $ticket->title }}</td>
                         <td>{{ ucfirst($ticket->priority) }}</td>
@@ -25,7 +25,7 @@
                         <td>{{ $ticket->department }}</td>
                         <td>{{ $ticket->requester->name }}</td>
                         <td>
-                            <a href="{{ route('tickets.show', $ticket->id) }}" class="btn btn-info">View</a>
+                            <!-- <a href="{{ route('tickets.show', $ticket->id) }}" class="btn btn-info">View</a> -->
                             <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('tickets.destroy', $ticket->id) }}" method="POST" style="display:inline;">
                                 @csrf

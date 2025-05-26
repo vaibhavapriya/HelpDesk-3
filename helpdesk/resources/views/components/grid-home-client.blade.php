@@ -1,53 +1,31 @@
-<section class="d-flex align-items-center justify-content-center ">
+<section class="d-flex align-items-center justify-content-center">
     <div class="container">
         <div class="row g-4 mb-5">
+            @guest
+            <x-home-card 
+                url="{{ route('register') }}" 
+                icon="fa-regular fa-pen-to-square" 
+                title="Register" 
+                :col="auth()->check() ? 'col-md-4' : 'col-md-3'" />
+            @endguest
 
-            <div class='col-12 col-sm-6 col-md-4 col-lg-3'>
-            <a href="{{ route('register') }}" class="text-decoration-none text-dark">
-                <div class="card text-center shadow-sm bg-light">
-                <div class="card-body">
-                    <i class="fa-regular fa-pen-to-square fa-2x mb-2"></i>
-                    <h5 class="card-title">Register</h5>
-                </div>
-                </div>
-            </a>
-            </div>
+            <x-home-card 
+                url="{{ url('ticket') }}" 
+                icon="fa-solid fa-rectangle-list" 
+                title="Submit Ticket" 
+                :col="auth()->check() ? 'col-md-4' : 'col-md-3'" />
 
-        <!-- Card 2 -->
-        <div class='col-12 col-sm-6 col-md-4 col-lg-3'>
-            <a href="{{ url('ticket') }}" class="text-decoration-none text-dark">
-                <div class="card text-center shadow-sm bg-light">
-                    <div class="card-body ">
-                        <i class="fa-solid fa-rectangle-list fa-2x mb-2"></i>
-                        <h5 class="card-title">Submit Ticket</h5>
-                    </div>
-                </div>
-            </a>
-        </div>
+            <x-home-card 
+                url="{{ url('tickets') }}" 
+                icon="fa-regular fa-newspaper" 
+                title="My Ticket" 
+                :col="auth()->check() ? 'col-md-4' : 'col-md-3'" />
 
-        <!-- Card 3 -->
-        <div class='col-12 col-sm-6 col-md-4 col-lg-3'>
-            <a href="{{ url('tickets') }}" class="text-decoration-none text-dark">
-                <div class="card text-center shadow-sm bg-light">
-                    <div class="card-body">
-                        <i class="fa-regular fa-newspaper fa-2x mb-2"></i>
-                        <h5 class="card-title">My Ticket</h5>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Card 4 -->
-        <div class='col-12 col-sm-6 col-md-4 col-lg-3'>
-            <a href="{{ route('kb') }}" class="text-decoration-none text-dark ">
-                <div class="card text-center shadow-sm bg-light">
-                    <div class="card-body">
-                        <i class="fa-solid fa-lightbulb  fa-2x mb-2"></i>
-                        <h5 class="card-title">Knowledgebase</h5>
-                    </div>
-                </div>
-            </a>
-        </div>
+            <x-home-card 
+                url="{{ route('kb') }}" 
+                icon="fa-solid fa-lightbulb" 
+                title="Knowledge Base" 
+                :col="auth()->check() ? 'col-md-4' : 'col-md-3'" />
         </div>
     </div>
 </section>

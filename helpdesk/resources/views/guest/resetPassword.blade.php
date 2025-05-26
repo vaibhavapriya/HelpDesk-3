@@ -4,7 +4,8 @@
 @section('content')
 <div class="container mt-5">
     <h2 class="mb-4">Reset Password</h2>
-
+    <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
     <form method="POST" action="{{ route('password.update') }}">
         @csrf
 
@@ -29,5 +30,7 @@
 
         <button type="submit" class="btn btn-primary">Reset Password</button>
     </form>
+    </div>
+    </div>
 </div>
 @endsection

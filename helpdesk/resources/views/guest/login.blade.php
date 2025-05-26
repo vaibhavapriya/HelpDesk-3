@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container mt-5">
+    <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
     <h2 class="mb-4">Login</h2>
 
     @if(session('status'))
@@ -36,5 +38,7 @@
     </form>
 
     <p class="mt-3">Don't have an account? <a href="{{ route('register') }}">Register</a></p>
+    </div>
+    </div>
 </div>
 @endsection

@@ -24,7 +24,7 @@
     </div>
     <div class="container bootstrap snippets bootdey">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-12">
                 <div class="blog-comment">
                     <h3 class="text-success">Comments</h3>
                     <hr/>
