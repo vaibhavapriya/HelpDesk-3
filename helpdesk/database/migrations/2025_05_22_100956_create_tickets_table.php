@@ -18,6 +18,7 @@ return new class extends Migration
         $table->enum('priority', ['low', 'medium', 'high']);
         $table->string('filetype')->nullable();
         $table->string('filelink')->nullable();
+        $table->string('attachment')->nullable();
         $table->enum('status', ['open', 'closed'])->default('open');
         $table->string('department');
         //$table->string('requester');

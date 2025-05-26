@@ -11,7 +11,7 @@ class StoreticketRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class StoreticketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'priority' => 'required|string',
+            'department' => 'required|string',
+            'attachment' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 }

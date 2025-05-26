@@ -39,7 +39,30 @@ class TicketController extends Controller
      */
     public function store(StoreticketRequest $request)
     {
-        //
+        $ticket = new Ticket();
+        $ticket->title = $request->title;
+        $ticket->description = $request->description;
+        $ticket->priority = $request->priority;
+        $ticket->status = 'open';  // Default status
+        $ticket->department =$request->department;
+        $ticket->requester_id = auth()->id();  // Assuming the user is logged in
+
+
+        //Validate the request
+        // $request->validate([
+        //     'attachment' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        // ]);
+
+        if ($request->hasFile('attachment')) {
+            $image = $request->file('attachment');
+            $filename = time().'_'.$image->getClientOriginalName();
+            $path = $image->storeAs('uploads', $filename, 'public');
+            // Save file path in the ticket model
+            $ticket->filelink = $path;
+        }
+
+        $ticket->save();
+        return redirect()->route('tickets.index')->with('success', 'Ticket created successfully');
     }
 
     /**
@@ -78,5 +101,7 @@ class TicketController extends Controller
     public function destroy(ticket $ticket)
     {
         $this->authorize('delete', $ticket);
+        $ticket->delete();
+        return redirect()->route('tickets.index')->with('success', 'Ticket deleted successfully');
     }
 }
