@@ -7,7 +7,7 @@
         <div class="alert alert-success">{{ session('status') }}</div>
     @endif
 
-    <form method="POST" action="{{ route('password.email') }}">
+    <form method="POST" action="{{ route('password.request') }}">
         @csrf
 
         <div class="mb-3">

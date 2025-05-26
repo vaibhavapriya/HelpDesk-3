@@ -9,16 +9,16 @@ Route::get('/', function () {
 })->name('home');
 Route::get('/kb', function () {
     return view('guest.knowledge');
-});
+})->name('kb');
 Route::get('/admin', function () {
     return view('adminhome');
 });
 
 Route::resource('tickets', TicketController::class);
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// Route::view('dashboard', 'dashboard')
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

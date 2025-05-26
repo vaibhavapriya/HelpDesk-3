@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
       <!-- Brand -->
-      <a class="navbar-brand me-5" href="home">HELPDESK</a>
+      <a class="navbar-brand me-5" href="{{ route('home') }}">HELPDESK</a>
 
       <!-- Toggle button for mobile (optional if you want it collapsible) -->
       <!-- Uncomment below if you want it responsive -->
@@ -18,25 +18,24 @@
        <ul class="navbar-nav">
         @guest
           <li class="nav-item">
-            <a class="nav-link" href="newTicket">SUBMIT TICKET</a>
+            <a class="nav-link" href="{{ url('tickets/create') }}">SUBMIT TICKET</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="knowledgeBase">KNOWLEDGEBASE</a>
+            <a class="nav-link" href="{{ route('kb') }}">KNOWLEDGEBASE</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-primary" href="login">LOGIN</a>
+            <a class="btn btn-primary" href="{{ route('login') }}">LOGIN</a>
           </li>
         @endguest
-        <!-- @if (Auth::check()) -->
         @auth
           <li class="nav-item">
-            <a class="nav-link" href="newTicket">SUBMIT TICKET</a>
+            <a class="nav-link" href="{{ url('tickets/create') }}">SUBMIT TICKET</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="knowledgeBase">KNOWLEDGEBASE</a>
+            <a class="nav-link" href="{{ route('kb') }}">KNOWLEDGEBASE</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="myTickets">MY TICKET</a>
+            <a class="nav-link" href="{{ url('tickets') }}">MY TICKET</a>
           </li>
           <!-- User Dropdown -->
           <li class="nav-item dropdown">
@@ -46,7 +45,7 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                 <!-- admin only -->
                 @if(Auth::user()->role === 'admin')
-                <li><a class="dropdown-item" href="adminhome"><i class="fas fa-user-shield me-2"></i> Admin Portal</a></li>
+                <li><a class="dropdown-item" href="{{ route('kb') }}"><i class="fas fa-user-shield me-2"></i> Admin Portal</a></li>
                 @endif
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="profile"><i class="fas fa-sign-out-alt me-2"></i> My Profile</a></li>

@@ -3,7 +3,7 @@
 <div class="container mt-5">
     <h2 class="mb-4">Register</h2>
 
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register-p') }}">
         @csrf
 
         <div class="mb-3">

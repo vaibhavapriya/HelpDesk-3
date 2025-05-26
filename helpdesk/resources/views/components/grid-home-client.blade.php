@@ -3,7 +3,7 @@
         <div class="row g-4 mb-5">
 
             <div class='col-12 col-sm-6 col-md-4 col-lg-3'>
-            <a href="register" class="text-decoration-none text-dark">
+            <a href="{{ route('register') }}" class="text-decoration-none text-dark">
                 <div class="card text-center shadow-sm bg-light">
                 <div class="card-body">
                     <i class="fa-regular fa-pen-to-square fa-2x mb-2"></i>
@@ -15,7 +15,7 @@
 
         <!-- Card 2 -->
         <div class='col-12 col-sm-6 col-md-4 col-lg-3'>
-            <a href="newTicket" class="text-decoration-none text-dark">
+            <a href="{{ url('ticket') }}" class="text-decoration-none text-dark">
                 <div class="card text-center shadow-sm bg-light">
                     <div class="card-body ">
                         <i class="fa-solid fa-rectangle-list fa-2x mb-2"></i>
@@ -27,7 +27,7 @@
 
         <!-- Card 3 -->
         <div class='col-12 col-sm-6 col-md-4 col-lg-3'>
-            <a href="myTickets" class="text-decoration-none text-dark">
+            <a href="{{ url('tickets') }}" class="text-decoration-none text-dark">
                 <div class="card text-center shadow-sm bg-light">
                     <div class="card-body">
                         <i class="fa-regular fa-newspaper fa-2x mb-2"></i>
@@ -39,7 +39,7 @@
 
         <!-- Card 4 -->
         <div class='col-12 col-sm-6 col-md-4 col-lg-3'>
-            <a href="knowledgeBase" class="text-decoration-none text-dark ">
+            <a href="{{ route('kb') }}" class="text-decoration-none text-dark ">
                 <div class="card text-center shadow-sm bg-light">
                     <div class="card-body">
                         <i class="fa-solid fa-lightbulb  fa-2x mb-2"></i>
