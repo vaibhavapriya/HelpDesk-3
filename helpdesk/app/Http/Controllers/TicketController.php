@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Http\Requests\StoreticketRequest;
 use App\Http\Requests\UpdateticketRequest;
 use App\Models\Ticket;
-
+use Illuminate\Support\Facades\Auth;
 class TicketController extends Controller
 {
     /**
@@ -16,9 +17,10 @@ class TicketController extends Controller
         //$tickets = Ticket::all(); foreach($ticket)echo $ticket->requester->name; //cause n+1 queries
         //dd(DB::enableQueryLog());//query logs
         //$tickets = Ticket::with('requester')-> get();
-        $tickets = Ticket::simplePaginate(15);// ->get() eager load the requester
+        //$tickets = Ticket::simplePaginate(15);// ->get() eager load the requester
         //dd(Ticket::all()-> paginate(5));
         //$tickets = Ticket::where('user_id', Auth::id())->latest()->get();
+        $tickets = Ticket::where('requester_id', Auth::id())->latest()->simplePaginate(15);
         return view('ticket.index', compact('tickets'));
         //return view('tickets.index', ['tickets' => $tickets,'totalCount' => $tickets->count(),]);
 
@@ -58,6 +60,7 @@ class TicketController extends Controller
      */
     public function edit(ticket $ticket)
     {
+        $this->authorize('update', $ticket);
         return view('ticket.edit',compact('ticket'));
     }
 
@@ -74,6 +77,6 @@ class TicketController extends Controller
      */
     public function destroy(ticket $ticket)
     {
-        //
+        $this->authorize('delete', $ticket);
     }
 }
