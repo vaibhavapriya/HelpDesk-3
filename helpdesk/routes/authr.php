@@ -4,7 +4,8 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth;
 
-Route::middleware('auth')->group(function () {
+//Route::group([], function () {
+Route::middleware('guest')->group(function () {
     Route::get('login',[Auth\LoginController::class,'show'])->name('login');//'auth.login'
     Route::post('login',[Auth\LoginController::class,'store'])->name('login-p');
 

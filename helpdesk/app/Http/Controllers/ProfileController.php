@@ -37,7 +37,7 @@ class ProfileController extends Controller
      */
     public function show(profile $profile)
     {
-        //
+        return view('user.editprofile');//
     }
 
     /**
