@@ -13,12 +13,12 @@ Route::get('/kb', function () {
 })->name('kb');
 Route::get('/admin', function () {
     return view('adminhome');
-})->name('adminhome');
+})->name('adminhome')->middleware('role:admin');
 
 Route::resource('tickets', TicketController::class);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('profile',[ProfileController::class,'show'])->name('profile')->middleware('role:admin');//'auth.login'
+    Route::get('profile',[ProfileController::class,'show'])->name('profile');//'auth.login'
     Route::post('profile',[ProfileController::class,'store'])->name('profile-p');
 });
 

@@ -52,7 +52,7 @@ class TicketController extends Controller
         // $request->validate([
         //     'attachment' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         // ]);
-
+        //$filePath = null;
         if ($request->hasFile('attachment')) {
             $image = $request->file('attachment');
             $filename = time().'_'.$image->getClientOriginalName();
@@ -60,7 +60,15 @@ class TicketController extends Controller
             // Save file path in the ticket model
             $ticket->filelink = $path;
         }
-
+        // $ticket = Ticket::create([
+        //     'title' => $request->title,
+        //     'description' => $request->description,
+        //     'priority' => $request->priority,
+        //     'status' => 'open',
+        //     'department' => $request->department,
+        //     'requester_id' => auth()->id(),
+        //     'filelink' => $path ?? null,  // Handle optional file
+        // ]);
         $ticket->save();
         return redirect()->route('tickets.index')->with('success', 'Ticket created successfully');
     }
@@ -74,7 +82,7 @@ class TicketController extends Controller
         // Eager load replies
         $ticket->load('replies');
         //$ticket = Ticket::with('replies')->find($id); 
-        
+        //$ticket = Ticket::with('replies')->findOrFail($id);
         return view('ticket.show',compact('ticket'));
     }
 
@@ -92,7 +100,24 @@ class TicketController extends Controller
      */
     public function update(UpdateticketRequest $request, ticket $ticket)
     {
-        //
+            // 1. Validate input using `$request->validate()`
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'priority' => 'required|in:low,medium,high',
+            'department' => 'required|string',
+            'attachment' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // 2. Use the validated data
+        $ticket = Ticket::create([
+            'title' => $validated['title'],
+            'description' => $validated['description'],
+            'priority' => $validated['priority'],
+            'department' => $validated['department'],
+            'status' => 'open',
+            'requester_id' => auth()->id(),
+        ]);
     }
 
     /**
