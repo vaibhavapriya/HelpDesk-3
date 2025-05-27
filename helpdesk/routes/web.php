@@ -18,7 +18,7 @@ Route::get('/admin', function () {
 Route::resource('tickets', TicketController::class);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('profile',[ProfileController::class,'show'])->name('profile');//'auth.login'
+    Route::get('profile',[ProfileController::class,'show'])->name('profile')->middleware('role:admin');//'auth.login'
     Route::post('profile',[ProfileController::class,'store'])->name('profile-p');
 });
 

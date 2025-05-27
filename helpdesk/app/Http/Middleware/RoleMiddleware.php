@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
 class RoleMiddleware
 {
@@ -15,7 +16,7 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next,$role): Response
     {
-        if(Auth::check() && Auth::user->role=== $role){
+        if(Auth::check() && Auth::user()->role=== $role){
             return $next($request);
         }
         else{
@@ -23,6 +24,10 @@ class RoleMiddleware
         }
     }
 }
+// Auth::check();
+// Auth::user();
+// Auth::attempt([...]);
+// Auth::logout();
 
 // app/Http/Middleware/RedirectIfAuthenticated.php
 //public function handle(Request $request, Closure $next, ...$guards)
