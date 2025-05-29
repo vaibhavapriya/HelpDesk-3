@@ -34,9 +34,11 @@
                 <label for="department" class="form-label">Department</label>
                 <input type="text" class="form-control" id="department" name="department" value="{{ $ticket->department }}" required>
             </div>
-            <div class="mb-3">
-                <label for="filelink" class="form-label">File Link</label>
-                <input type="url" class="form-control" id="filelink" name="filelink" value="{{ $ticket->filelink }}">
+            <img src="{{ Storage::url($ticket->filelink) }}" alt="Ticket Attachment" style="max-width: 300px;">
+
+            <div class="mb-3 form-group">
+                <label for="attachment" class="form-label">Attachment</label>
+                <div class="input-group"><input class="form-control" type="file" id="attachment" name="attachment" accept="image/*"></div>
             </div>
             <button type="submit" class="btn btn-primary">Update Ticket</button>
         </form>

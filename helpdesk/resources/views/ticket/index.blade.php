@@ -12,7 +12,7 @@
                     <th>Status</th>
                     <th>Department</th>
                     <!-- <th>Requester</th> -->
-                    <th>Actions</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>

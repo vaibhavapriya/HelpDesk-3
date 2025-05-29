@@ -109,15 +109,19 @@ class TicketController extends Controller
             'attachment' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // 2. Use the validated data
-        $ticket = Ticket::create([
-            'title' => $validated['title'],
-            'description' => $validated['description'],
-            'priority' => $validated['priority'],
-            'department' => $validated['department'],
-            'status' => 'open',
-            'requester_id' => auth()->id(),
-        ]);
+        // 2. Update the ticket with validated data
+        $ticket->title = $validated['title'];
+        $ticket->description = $validated['description'];
+        $ticket->priority = $validated['priority'];
+        $ticket->department = $validated['department'];
+
+        // 3. Handle optional file upload
+        if ($request->hasFile('attachment')) {
+            $path = $request->file('attachment')->store('attachments', 'public');
+            $ticket->attachment = $path;
+        }
+
+        $ticket->save(); 
     }
 
     /**
