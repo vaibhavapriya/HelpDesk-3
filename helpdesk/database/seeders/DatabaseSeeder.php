@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ->has(Ticket::factory()->count(10)
             ->has(Reply::factory()->count($count)  , 'replies')
             , 'tickets') ->create();
+            //replies and tickets are relationship methods 
         // User::factory(10)->create();
 
         // User::factory()->create([
