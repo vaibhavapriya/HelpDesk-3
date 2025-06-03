@@ -76,6 +76,7 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
+    //ticket $ticket is collected from route x/{ticket}/show
     public function show(ticket $ticket)
     {
         $this->authorize('view', $ticket);//policies
@@ -122,6 +123,8 @@ class TicketController extends Controller
         }
 
         $ticket->save(); 
+        return redirect()->route('tickets.index')->with('success', 'Ticket created successfully');
+    
     }
 
     /**

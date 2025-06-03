@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorereplyRequest;
 use App\Http\Requests\UpdatereplyRequest;
 use App\Models\Reply;
+use App\Models\Ticket;
+use Illuminate\Support\Facades\Auth;
 
 class ReplyController extends Controller
 {
@@ -27,9 +29,14 @@ class ReplyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorereplyRequest $request)
+    public function store(StorereplyRequest $request, ticket $ticket)
     {
-        //
+        $reply = Reply::create([
+            'replier_id' => auth()->id(),
+            'ticket_id' => $ticket->id,
+            'reply' => $request->reply,
+        ]);
+        return redirect()->route('tickets.index')->with('success', 'Ticket created successfully');
     }
 
     /**

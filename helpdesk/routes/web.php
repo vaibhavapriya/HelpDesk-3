@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\ReplyController;
 Route::get('/', function () {
     return view('clienthome');
 })->name('home');
@@ -17,21 +17,14 @@ Route::get('/admin', function () {
 
 Route::resource('tickets', TicketController::class);
 
+
+
 Route::middleware(['auth'])->group(function () {
-    Route::get('profile',[ProfileController::class,'show'])->name('profile');//'auth.login'
-    Route::post('profile',[ProfileController::class,'store'])->name('profile-p');
+    Route::get('/profile',[ProfileController::class,'show'])->name('profile');//'auth.login'
+    Route::post('/profile/{id}',[ProfileController::class,'store'])->name('profile-p');
+    Route::post('/ticket/{ticket}/comment',[ReplyController::class,'store'])->name('comment');
 });
 
-// Route::view('dashboard', 'dashboard')
-//     ->middleware(['auth', 'verified'])
-//     ->name('dashboard');
 
-// Route::middleware(['auth'])->group(function () {
-//     Route::redirect('settings', 'settings/profile');
-
-//     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
-//     Volt::route('settings/password', 'settings.password')->name('settings.password');
-//     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
-// });
 
 require __DIR__.'/authr.php';

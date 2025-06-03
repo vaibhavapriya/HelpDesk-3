@@ -57,9 +57,13 @@ class User extends Authenticatable
             ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
     }
-        public function tickets()
+    public function tickets()
     {
         return $this->hasMany(Ticket::class, 'requester_id');
+    }
+    public function replies()
+    {
+        return $this->hasMany(Reply::class, 'replier_id');
     }
     public function isAdmin(): bool
     {

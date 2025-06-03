@@ -30,18 +30,6 @@
                     <h3 class="text-success">Replies</h3>
                     <hr/>
                     <ul class="comments">
-                        <li class="clearfix col-12">
-                            <img src="{{ $reply->user->avatar_url ?? 'https://bootdey.com/img/Content/user_1.jpg' }}" class="avatar" alt="User Avatar">
-                            <div class="post-comments">
-                                <form action="" method="POST" class="d-flex align-items-center">
-                                    @csrf
-                                    <!-- You can remove @method('POST') here since method="POST" is already set -->
-
-                                    <input class="form-control me-2" id="reply" name="reply" type="text" placeholder="Reply here">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </form>
-                            </div>
-                        </li>
                         @foreach($ticket->replies as $reply)
                             <li class="clearfix">
                                 <!-- <img src="{{ $reply->user->avatar_url ?? 'https://bootdey.com/img/Content/user_1.jpg' }}" class="avatar" alt="User Avatar"> -->
@@ -74,6 +62,19 @@
                                 @endif
                             </li>
                         @endforeach
+                    
+                        <li class="clearfix col-12">
+                            <img src="{{ $reply->user->avatar_url ?? 'https://bootdey.com/img/Content/user_1.jpg' }}" class="avatar" alt="User Avatar">
+                            <div class="post-comments">
+                                <form action="{{ route('comment',$ticket->id) }}" method="POST" class="d-flex align-items-center">
+                                    @csrf
+
+                                    <input class="form-control me-2" id="reply" name="reply" type="text" placeholder="Reply here">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </li>
+
                     </ul>
                 <!-- </div> -->
             </div>

@@ -1,8 +1,8 @@
 @extends('components.layouts.app.client')
 
 @section('content')
-<div class="container py-5">
-    <div class="row mb-4 align-items-center bg-light">
+<div class="container  ">
+    <div class="row mb-4 align-items-center p-5 bg-light">
         <div class="col-md-8">
             <h2 class="mb-0">User Profile</h2>
         </div>
@@ -17,7 +17,7 @@
         <div class="row g-3">
             <div class="col-md-6">
                 <label for="first_name" class="form-label">First Name</label>
-                <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Enter first name">
+                <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Enter first name" value="{{$profile->id}}">
             </div>
 
             <div class="col-md-6">
@@ -44,14 +44,14 @@
                 <button type="submit" class="btn btn-success">
                     <i class="bi bi-check-circle"></i> Save
                 </button>
-                <button type="reset" class="btn btn-secondary">
-                    <i class="bi bi-arrow-repeat"></i> Reset
+                <button id="edit" class="btn btn-secondary">
+                    <i class="bi bi-arrow-repeat"></i> Edit
                 </button>
             </div>
         </div>
     </form>
 </div>
-<div class="row mb-4 align-items-center bg-light ">
+<div class="row mb-4 align-items-center bg-light p-5 mt-5">
     <div class="row mb-4 align-items-center">
         <div class="col-md-8">
             <h2 class="mb-0">Change Password</h2>
@@ -75,8 +75,8 @@
                 <button type="submit" class="btn btn-success">
                     <i class="bi bi-check-circle"></i> Save
                 </button>
-                <button type="reset" class="btn btn-secondary">
-                    <i class="bi bi-arrow-repeat"></i> Reset
+                <button id="edit" type="reset" class="btn btn-secondary">
+                    <i class="bi bi-arrow-repeat"></i> Edit
                 </button>
             </div>
         </div>
